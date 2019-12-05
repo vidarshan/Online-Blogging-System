@@ -1,10 +1,6 @@
 <?php include "includes/header.php"; ?>
     <div id="wrapper">
 
-
-
-
-
     <?php include "includes/navigation.php"; ?>
 
 
@@ -22,7 +18,18 @@
                             <small>Author name</small>
                         </h1>
 
-  
+
+                        <div class="col-xs-6">
+                        <form action="">
+                            <div class="form-group">
+                            <label for="">Category Title</label>
+                            <input class="form-control" type="text" name="cat_title">
+                            </div>
+                            <div class="form-group">
+                            <input class="btn btn-warning" type="submit" name="submit" value="Add Category">
+                            </div>
+                        </form>
+                        </div>
 
 
                     </div>
