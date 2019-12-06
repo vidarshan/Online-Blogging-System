@@ -6,9 +6,13 @@
         $post_category_id = $_POST['post_category_id'];
         $post_status = $_POST['post_status'];
 
+
+
         //use super global $_FILES
         $post_image = $_FILES['image']['name'];
         $post_image_temp = $_FILES['image']['tmp_name'];
+
+
 
         $post_tags = $_POST['post_tags'];
         $post_content = $_POST['post_content'];
@@ -20,6 +24,16 @@
 
         move_uploaded_file($post_image_temp, "../images/$post_image" );
 
+        //Query Failed You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax 
+        //to use near 'Failed Unknown column 'ere' in 'field list','Query Failed Unknown column 'ere' i' at line 1
+
+        //above errors occur when an text is inserted to int column.
+        $query = "INSERT INTO posts(post_category_id,post_title,post_author,post_date,post_image,post_content,post_tags,post_comment_count,post_status) ";
+        $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_comment_count}','{$post_status}' ) ";
+    
+        $create_post_query = mysqli_query($connection, $query);
+
+        confirmQuery($create_post_query);
     }
 ?>
 
