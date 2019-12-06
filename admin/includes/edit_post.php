@@ -46,6 +46,7 @@ $query = "SELECT * FROM posts WHERE post_id = {$the_post_id} ";
 
             move_uploaded_file($post_image_temp, "../images/$post_image" );
         
+            //to fix the bug of iage disappering after updating the post.
             if(empty($post_image)){
 
                 $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
