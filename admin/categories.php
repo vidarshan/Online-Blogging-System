@@ -56,12 +56,7 @@
                         </div>
 
                         
-                <?php
-                
-                        $query = "SELECT * FROM categories";
 
-                        $select_categories = mysqli_query($connection, $query);
-                ?>
 
 
                         <div class="col-xs-6">
@@ -72,21 +67,50 @@
                                         <th>Category Title</th>
                                     </tr>
                                     <tbody>
+
+
+                                            <?php
+                        
+                                                $query = "SELECT * FROM categories";
+
+                                                $select_categories = mysqli_query($connection, $query);
+                                            
+                                                
                                        
-                                        <?php
+                                        
                                                 while($row = mysqli_fetch_assoc($select_categories)){
 
                                                     $cat_id = $row['cat_id'];
                                                     $cat_title = $row['cat_title'];
 
                                                     echo "<tr>";
-                                                    echo "<td>${cat_id}</td>";
-                                                    echo "<td>${cat_title}</td>";
+                                                    echo "<td>{$cat_id}</td>";
+                                                    echo "<td>{$cat_title}</td>";
+                                                    echo "<td><a href='categories.php?edit={$cat_id}'>DELET</a></td>";
+                                                    echo "<td><a href='categories.php?delete={$cat_id}'>DELETE</a></td>";
                                                     echo "</tr>"; 
 
                                                 } 
 
                                         ?> 
+
+                                        <?php
+                                            if(isset($_GET['delete'])){
+
+                                                $the_cat_id = $_GET['delete'];
+                                                
+                                                $query = "DELETE FROM categories WHERE cat_id = '{$the_cat_id}'";
+
+                                                $delete_categories_query = mysqli_query($connection, $query);
+
+                                                if(!$delete_categories_query){
+                                                            die("Query Failed ". mysqli_error($connection));
+                                                }
+
+                                                header("Location: categories.php");
+
+                                            }
+                                        ?>
                                         
                                     </tbody>
                                 </thead>
