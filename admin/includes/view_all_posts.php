@@ -45,7 +45,9 @@
                                         echo "<td>{$post_tags}</td>";
                                         echo "<td>{$post_comment_count}</td>";
                                         echo "<td>{$post_date}</td>";
-                                        echo "<td><a href='posts.php?edit={$post_id}'>EDIT</a></td>";
+                                        //posts.php file contains the conditions
+                                        //standard and professional way
+                                        echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>EDIT</a></td>";
                                         echo "<td><a href='posts.php?delete={$post_id}'>DELETE</a></td>";
                                         echo "<tr>";
 
