@@ -1,4 +1,29 @@
-<form action="" method="post">
+<?php
+    if(isset($_POST['create_post'])){
+
+        $post_title = $_POST['title'];
+        $post_author = $_POST['author'];
+        $post_category_id = $_POST['post_category_id'];
+        $post_status = $_POST['post_status'];
+
+        //use super global $_FILES
+        $post_image = $_FILES['image']['name'];
+        $post_image_temp = $_FILES['image']['tmp_name'];
+
+        $post_tags = $_POST['post_tags'];
+        $post_content = $_POST['post_content'];
+        $post_date = date('d-m-y');
+        $post_comment_count = 4;
+
+
+        //functions for images
+
+        move_uploaded_file($post_image_temp, "../images/$post_image" );
+
+    }
+?>
+
+<form action="" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
 
@@ -29,6 +54,12 @@
             
     </div>
 
+    <div class="form-group">
+        
+        <label for="post_image">Post Image</label>
+        <input type="file" name="image">
+            
+    </div>
 
     <div class="form-group">
         
