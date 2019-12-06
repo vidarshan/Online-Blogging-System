@@ -51,6 +51,7 @@
 
                                     }
 
+
                                     if(isset($_GET['delete'])){
 
                                         $the_post_id = $_GET['delete'];
