@@ -45,9 +45,24 @@
                                         echo "<td>{$post_tags}</td>";
                                         echo "<td>{$post_comment_count}</td>";
                                         echo "<td>{$post_date}</td>";
-                                       // echo "<td><a href='categories.php?delete={$cat_id}'>DELETE</a></td>";
-                                      //  echo "<td><a href='categories.php?edit={$cat_id}'>EDIT</a></td>";
+                                        echo "<td><a href='posts.php?edit={$post_id}'>EDIT</a></td>";
+                                        echo "<td><a href='posts.php?delete={$post_id}'>DELETE</a></td>";
                                         echo "<tr>";
+
+                                    }
+
+                                    if(isset($_GET['delete'])){
+
+                                        $the_post_id = $_GET['delete'];
+
+                                        $query = "DELETE FROM posts WHERE post_id = {$the_post_id} ";
+
+                                        $delete_post_query = mysqli_query($connection, $query);
+
+                                        confirmQuery($delete_post_query);
+
+                                        header("Location: ./posts.php");
+
                                     }
                             ?>
                                 
