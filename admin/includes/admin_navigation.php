@@ -55,7 +55,9 @@
                     </li>
 
                     <li class="active">
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Comments</a>
+
+                    <!--default case in the switch statement in comments.php-->
+                        <a href="./comments.php"><i class="fa fa-fw fa-file"></i> Comments</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
