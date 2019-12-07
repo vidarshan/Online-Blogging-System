@@ -2,8 +2,8 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Author</th>
                                     <th>Post Title</th>
+                                    <th>Author</th>
                                     <th>Comment</th>
                                     <th>Email</th>
                                     <th>Status</th>
