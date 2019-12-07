@@ -3,6 +3,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Username</th>
+                                    <th>Password</th>
                                     <th>Firstname</th>
                                     <th>Lastname</th>
                                     <th>Email</th>
@@ -15,104 +16,36 @@
 
 
                             <?php
-                                    $query = "SELECT * FROM comments";
-                                    $select_comments = mysqli_query($connection, $query);
-                                        while($row = mysqli_fetch_assoc($select_comments)){
-                                        $comment_id = $row['comment_id'];
-                                        $comment_post_id = $row['comment_post_id'];
-                                        $comment_author = $row['comment_author'];
-                                        $comment_email = $row['comment_email'];
-                                        $comment_content = $row['comment_content'];
-                                        $comment_status = $row['comment_status'];
-                                        $comment_date = $row['comment_date'];
+                                    $query = "SELECT * FROM users";
+                                    $select_users = mysqli_query($connection, $query);
+                                        while($row = mysqli_fetch_assoc($select_users)){
+                                        $user_id = $row['user_id'];
+                                        $username = $row['username'];
+                                        $user_password = $row['user_password'];
+                                        $user_firstname= $row['user_firstname'];
+                                        $user_lastname = $row['user_lastname'];
+                                        $user_email = $row['user_email'];
+                                       // $user_image = $row['user_image'];
+                                        $user_role = $row['user_role'];
+                                        //$user_date = $row['user_date'];
                                         
                                     
 
                                         echo "<tr>";
-                                        echo "<td>{$comment_id}</td>";
-                                        echo "<td>{$comment_post_id}</td>";
-                                        echo "<td>{$comment_author}</td>";
-                                        echo "<td>{$comment_email}</td>";
-                                        echo "<td>{$comment_content}</td>";
-                                        echo "<td>{$comment_status}</td>";
+                                        echo "<td>{$user_id}</td>";
+                                        echo "<td>{$username}</td>";
+                                        echo "<td>{$user_password}</td>";
+                                        echo "<td>{$user_firstname}</td>";
+                                        echo "<td>{$user_lastname}</td>";
+                                        echo "<td>{$user_email}</td>";
+                                        echo "<td>{$user_role}</td>";
+                                        echo "<td>date here</td>";
 
-
-                                        //relating comments to posts
-
-                                        $query = "SELECT * FROM posts WHERE post_id = $comment_post_id ";
-                                        $select_post_id_query = mysqli_query($connection, $query);
-
-                                        while($row = mysqli_fetch_assoc($select_post_id_query)){
-
-                                            $post_id = $row['post_id'];
-                                            $post_title = $row['post_title'];
-                                        }
-
-                                        echo "<td><a href='../post.php?p_id=$post_id'>{$post_title}</a></td>";
                                         
-                                        
-                                        //end
-                                        
-                                        
-                                        echo "<td>{$comment_date}</td>";
-                                        echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
-                                        echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
-                                        echo "<td><a href='comments.php?delete={$comment_id}'>DELETE</a></td>";
-
-
-
+        
 
                                     }
 
-                                    if(isset($_GET['unapprove'])){
-
-                                        $the_comment_id = $_GET['unapprove'];
-
-                                    $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = $the_comment_id ";
-
-                                        $unapprove_comment_query = mysqli_query($connection, $query);
-
-                                        confirmQuery($unapprove_comment_query);
-
-                                        header("Location: ./comments.php");
-
-                                    }
-
-
-                                    //approving and unapproving comment status
-
-
-                                    if(isset($_GET['approve'])){
-
-                                        $the_comment_id = $_GET['approve'];
-
-                                    $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = $the_comment_id ";
-
-                                        $approve_comment_query = mysqli_query($connection, $query);
-
-                                        confirmQuery($approve_comment_query);
-
-                                        header("Location: ./comments.php");
-
-                                    }
-
-
-                                    //end 
-
-                                    
-                                    if(isset($_GET['delete'])){
-
-                                        $the_comment_id = $_GET['delete'];
-
-                                        $query = "DELETE FROM comments WHERE comment_id = {$the_comment_id} ";
-
-                                        $delete_comment_query = mysqli_query($connection, $query);
-
-                                        confirmQuery($delete_comment_query);
-
-                                        header("Location: ./comments.php");
-
-                                    }
                             ?>
                                 
                             </tbody>
