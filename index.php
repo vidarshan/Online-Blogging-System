@@ -21,7 +21,9 @@
                         $post_author = $row['post_author'];
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
-                        $post_content = $row['post_content'];
+
+                        //truncating post content
+                        $post_content = substr($row['post_content'],0,150);
                  
                         ?>
 
