@@ -40,6 +40,9 @@
                                         echo "<td>{$user_email}</td>";
                                         echo "<td>{$user_role}</td>";
                                         echo "<td>date here</td>";
+                                        //echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
+                                        //echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
+                                        echo "<td><a href='users.php?delete={$user_id}'>DELETE</a></td>";
 
                                         
         
@@ -47,6 +50,21 @@
                                     }
 
                             ?>
-                                
+                                    <?php
+    
+                                                if(isset($_GET['delete'])){
+
+                                                    $the_user_id = $_GET['delete'];
+
+                                                    $query = "DELETE FROM users WHERE user_id = {$the_user_id} ";
+
+                                                    $delete_user_query = mysqli_query($connection, $query);
+
+                                                    confirmQuery($delete_user_query);
+
+                                                    header("Location: ./users.php");
+
+                                                }
+                                ?>
                             </tbody>
                         </table>
