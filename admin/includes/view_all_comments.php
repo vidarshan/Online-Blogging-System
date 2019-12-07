@@ -82,6 +82,10 @@
 
                                     }
 
+
+                                    //approving and unapproving comment status
+
+
                                     if(isset($_GET['approve'])){
 
                                         $the_comment_id = $_GET['approve'];
@@ -96,6 +100,10 @@
 
                                     }
 
+
+                                    //end 
+
+                                    
                                     if(isset($_GET['delete'])){
 
                                         $the_comment_id = $_GET['delete'];
