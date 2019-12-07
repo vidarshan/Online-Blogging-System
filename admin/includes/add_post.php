@@ -28,7 +28,7 @@
         //to use near 'Failed Unknown column 'ere' in 'field list','Query Failed Unknown column 'ere' i' at line 1
 
         //above errors occur when an text is inserted to int column.
-        $query = "INSERT INTO posts(post_category_id,post_title,post_author,post_date,post_image,post_content,post_tags,post_comment_count,post_status) ";
+        $query = "INSERT INTO posts(post_category_id,post_title,post_author,post_date,post_image,post_content,post_tags,post_status) ";
         $query .= "VALUES({$post_category_id},'{$post_title}','{$post_author}',now(),'{$post_image}','{$post_content}','{$post_tags}','{$post_status}' ) ";
     
         $create_post_query = mysqli_query($connection, $query);
