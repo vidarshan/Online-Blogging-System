@@ -20,23 +20,23 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
     
         }
 
-                //     $query = "UPDATE posts SET ";
-        //     /////////////////////////////////////////
-        //     $query .= "post_category_id = '{$post_category_id}', ";
-        //     $query .= "post_title = '{$post_title}', ";
-        //     $query .= "post_author = '{$post_author}', ";
-        //     $query .= "post_date = now(), ";
-        //     $query .= "post_image = '{$post_image}', ";
-        //     $query .= "post_content = '{$post_content}', ";
-        //     $query .= "post_tags = '{$post_tags}', ";
-        //     $query .= "post_status = '{$post_status}' ";
-        //     $query .= "WHERE post_id = {$the_post_id} ";
+            //         $query = "UPDATE posts SET ";
+            // /////////////////////////////////////////
+            // $query .= "post_category_id = '{$post_category_id}', ";
+            // $query .= "post_title = '{$post_title}', ";
+            // $query .= "post_author = '{$post_author}', ";
+            // $query .= "post_date = now(), ";
+            // $query .= "post_image = '{$post_image}', ";
+            // $query .= "post_content = '{$post_content}', ";
+            // $query .= "post_tags = '{$post_tags}', ";
+            // $query .= "post_status = '{$post_status}' ";
+            // $query .= "WHERE post_id = {$the_post_id} ";
 
 
-        //     $update_post = mysqli_query($connection, $query);
+            // $update_post = mysqli_query($connection, $query);
 
 
-        //     confirmQuery($update_post);
+            // confirmQuery($update_post);
 
     }
 
@@ -121,15 +121,25 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
     
    <select name="user_role" id="">
 
-            <option value="subscriber">Select Option</option>
-            <option value="admin">Admin</option>
-            <option value="subscriber">Subscriber</option>
+   <option value="subscriber"><?php echo $user_role; ?></option>
+
+   
+            <?php
+
+            //change user role if the user is a subscriber to admin but not from admin
+            //admin remains admin.
+            
+                if($user_role == 'admin'){
+                   echo "option value='subscriber'>Subscriber</option>"; 
+                }else{
+                    echo "<option value='admin'>Admin</option>";
+                }
+            ?>
+            
+            
+           
         </select>
     </div>
-
-
-
-
 
 
     <div class="form-group">
