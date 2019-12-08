@@ -42,6 +42,7 @@
                                         echo "<td>date here</td>";
                                         echo "<td><a href='users.php?change_to_admin=$user_id'>MAKE ADMIN</a></td>";
                                         echo "<td><a href='users.php?change_to_subscriber=$user_id'>MAKE SUBSCRIBER</a></td>";
+                                        echo "<td><a href='users.php?source=edit_user&edit_user={$user_id}'>EDIT</a></td>";
                                         echo "<td><a href='users.php?delete={$user_id}'>DELETE</a></td>";
 
                                         
@@ -68,7 +69,7 @@
 
 
                                                 //changing user roles
-                                                
+
                                                 if(isset($_GET['change_to_admin'])){
 
                                                     $the_user_id = $_GET['change_to_admin'];
