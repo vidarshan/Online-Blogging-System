@@ -40,8 +40,8 @@
                                         echo "<td>{$user_email}</td>";
                                         echo "<td>{$user_role}</td>";
                                         echo "<td>date here</td>";
-                                        //echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
-                                        //echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
+                                        echo "<td><a href='users.php?change_to_admin=$user_id'>MAKE ADMIN</a></td>";
+                                        echo "<td><a href='users.php?change_to_subscriber=$user_id'>MAKE SUBSCRIBER</a></td>";
                                         echo "<td><a href='users.php?delete={$user_id}'>DELETE</a></td>";
 
                                         
@@ -64,6 +64,41 @@
 
                                                     header("Location: ./users.php");
 
+                                                }
+
+
+                                                //changing user roles
+                                                
+                                                if(isset($_GET['change_to_admin'])){
+
+                                                    $the_user_id = $_GET['change_to_admin'];
+            
+                                                $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id ";
+            
+                                                    $change_to_admin_query = mysqli_query($connection, $query);
+            
+                                                    confirmQuery($change_to_admin_query);
+            
+                                                    header("Location: ./users.php");
+            
+                                                }
+            
+            
+                                                //changing user roles
+            
+            
+                                                if(isset($_GET['change_to_subscriber'])){
+            
+                                                    $the_user_id = $_GET['change_to_subscriber'];
+            
+                                                $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_user_id ";
+            
+                                                    $change_to_subscriber_query = mysqli_query($connection, $query);
+            
+                                                    confirmQuery($change_to_subscriber_query);
+            
+                                                    header("Location: ./users.php");
+            
                                                 }
                                 ?>
                             </tbody>
