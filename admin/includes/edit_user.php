@@ -3,7 +3,7 @@
     if(isset($_GET['edit_user'])){
 
         $the_user_id = $_GET['edit_user'];
-
+    }
 
 $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
         $select_users_by_id = mysqli_query($connection, $query);
@@ -20,79 +20,41 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
     
         }
 
-            //         $query = "UPDATE posts SET ";
-            // /////////////////////////////////////////
-            // $query .= "post_category_id = '{$post_category_id}', ";
-            // $query .= "post_title = '{$post_title}', ";
-            // $query .= "post_author = '{$post_author}', ";
-            // $query .= "post_date = now(), ";
-            // $query .= "post_image = '{$post_image}', ";
-            // $query .= "post_content = '{$post_content}', ";
-            // $query .= "post_tags = '{$post_tags}', ";
-            // $query .= "post_status = '{$post_status}' ";
-            // $query .= "WHERE post_id = {$the_post_id} ";
+    
+    if(isset($_POST['edit_user'])){
+
+        $username = $_POST['username'];
+        $user_firstname = $_POST['user_firstname'];
+        $user_lastname = $_POST['user_lastname'];
+        $user_password = $_POST['user_password'];
+        $user_email = $_POST['user_email'];
+        $user_role = $_POST['user_role'];
+
+    
+        $query = "UPDATE users SET ";
+    
+        
+        $query .= "user_firstname = '{$user_firstname}', ";
+        $query .= "user_lastname = '{$user_lastname}', ";
+        $query .= "user_role = '{$user_role}', ";
+        $query .= "username = '{$username}', ";
+        $query .= "user_email = '{$user_email}', ";
+        $query .= "user_password = '{$user_password}' ";
+        
+        
+        $query .= "WHERE user_id = {$the_user_id} ";
 
 
-            // $update_post = mysqli_query($connection, $query);
+        $update_user = mysqli_query($connection, $query);
 
 
-            // confirmQuery($update_post);
+        confirmQuery($update_user);
 
+        
     }
 
-        // if(isset($_POST['edit_user'])){
 
-        //     $post_title = $_POST['title'];
-        //     $post_author = $_POST['author'];
-        //     $post_category_id = $_POST['post_category'];
-        //     $post_status = $_POST['post_status'];
-    
-    
-    
-        //     //use super global $_FILES
-        //     // $post_image = $_FILES['image']['name'];
-        //     // $post_image_temp = $_FILES['image']['tmp_name'];
-    
-    
-    
-        //     $post_tags = $_POST['post_tags'];
-        //     $post_content = $_POST['post_content'];
-
-
-        //     move_uploaded_file($post_image_temp, "../images/$post_image" );
-        
-        //     //to fix the bug of iage disappering after updating the post.
-        //     if(empty($post_image)){
-
-        //         $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
-        //         $select_image = mysqli_query($connection, $query);
-
-        //         while($row = mysqli_fetch_array($select_image)){
-        //             $post_image = $row['post_image'];
-        //         }       
-        //     }
-                
-        
-        //     $query = "UPDATE posts SET ";
-        //     /////////////////////////////////////////
-        //     $query .= "post_category_id = '{$post_category_id}', ";
-        //     $query .= "post_title = '{$post_title}', ";
-        //     $query .= "post_author = '{$post_author}', ";
-        //     $query .= "post_date = now(), ";
-        //     $query .= "post_image = '{$post_image}', ";
-        //     $query .= "post_content = '{$post_content}', ";
-        //     $query .= "post_tags = '{$post_tags}', ";
-        //     $query .= "post_status = '{$post_status}' ";
-        //     $query .= "WHERE post_id = {$the_post_id} ";
-
-
-        //     $update_post = mysqli_query($connection, $query);
-
-
-        //     confirmQuery($update_post);
-
-            
-        // }
+      
     
 
 
@@ -128,7 +90,7 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
 
             //change user role if the user is a subscriber to admin but not from admin
             //admin remains admin.
-            
+
                 if($user_role == 'admin'){
                    echo "option value='subscriber'>Subscriber</option>"; 
                 }else{
@@ -172,7 +134,7 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
 
     <div class="form-group">
         
-    <input type="submit" value="Add User" name="edit_user" class="btn btn-primary ">
+    <input type="submit" value="Update User" name="edit_user" class="btn btn-primary ">
             
     </div>
 
