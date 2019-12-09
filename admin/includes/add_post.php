@@ -35,7 +35,10 @@
 
         confirmQuery($create_post_query);
 
-        echo "<p class='bg-success'>Post Updated : " . " " . "<a href='view_all_posts.php'> View All Posts</a>";
+        //return latest id creted
+        $the_post_id = mysqli_insert_id($connection);
+
+        echo "<p class='bg-success'>Post Added : " . " " . "<a href='../post.php?p_id={$the_post_id}'> View Post</a>";
     }
 ?>
 
