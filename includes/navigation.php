@@ -34,8 +34,11 @@
                 ?>
        
                             <li><a href='admin'>Admin</a></li>
+                            <li><a href='registration.php'>Registration</a></li>
 
-                            <?php 
+
+
+ <?php 
 if(isset($_SESSION['username'])) {
     if(isset($_GET['p_id'])) {
         
