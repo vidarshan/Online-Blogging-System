@@ -59,7 +59,7 @@ $query = "SELECT * FROM posts WHERE post_id = {$the_post_id} ";
                 
         
             $query = "UPDATE posts SET ";
-            /////////////////////////////////////////
+          
             $query .= "post_category_id = '{$post_category_id}', ";
             $query .= "post_title = '{$post_title}', ";
             $query .= "post_author = '{$post_author}', ";
@@ -76,6 +76,7 @@ $query = "SELECT * FROM posts WHERE post_id = {$the_post_id} ";
 
             confirmQuery($update_post);
 
+            echo "<p class='bg-success'>Post Updated : " . " " . "<a href='../post.php?p_id={$the_post_id}'> View Post </a> or <a href='posts.php?p_id={$the_post_id}'> View All Posts </a>";
             
         }
     
