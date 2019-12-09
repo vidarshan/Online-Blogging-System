@@ -3,9 +3,9 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Post Title</th>
-                                    <th>Author</th>
-                                    <th>Comment</th>
+                                    <th>Author</th>                      
                                     <th>Email</th>
+                                    <th>Comment</th>
                                     <th>Status</th>
                                     <th>In response to</th>
                                     <th>Date</th>
