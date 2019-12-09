@@ -3,15 +3,26 @@
 
  <?php
     if(isset($_POST['submit'])){
-        
+  
+        //$2y$10$Iusesomecrazystrings22 -cost parameter on db 
+
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        echo $username = mysqli_real_escape_string($connection, $username);
+        $username = mysqli_real_escape_string($connection, $username);
         $email = mysqli_real_escape_string($connection, $email);
         $password = mysqli_real_escape_string($connection, $password);
 
+        $query = "SELECT randSalt FROM users ";
+        $select_rant_salt_query = mysqli_query($connection, $query);
+
+        //! is importnat if not an error will appear evet if the query is working
+        if(!$select_rant_salt_query){
+
+            die("Query failed ". mysqli_error($connection));
+            
+     }
     }
  ?>
 
@@ -57,4 +68,4 @@
 
 
 
-<?php include "includes/footer.php";?>
+<?php include "includes/footer.php"; ?>
