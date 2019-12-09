@@ -185,6 +185,34 @@
             </div>
             <!-- /.row -->
 
+            <?php
+            
+            $query = "SELECT * FROM posts WHERE post_status = 'draft'";
+            $select_all_draft_posts = mysqli_query($connection, $query);
+            $post_draft_count = mysqli_num_rows($select_all_draft_posts); 
+
+
+
+            $query = "SELECT * FROM comments WHERE comment_status = 'approved'";
+            $select_all_approved_comments = mysqli_query($connection, $query);
+            $comments_approved_count = mysqli_num_rows($select_all_approved_comments); 
+
+
+
+            $query = "SELECT * FROM comments WHERE comment_status = 'unapproved'";
+            $select_all_unapproved_comments = mysqli_query($connection, $query);
+            $comments_unapproved_count = mysqli_num_rows($select_all_unapproved_comments); 
+            
+
+
+            $query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+            $select_all_subscribers_count = mysqli_query($connection, $query);
+            $user_subscriber_count = mysqli_num_rows($select_all_subscribers_count); 
+            
+
+            
+            
+            ?>
 
 
 
@@ -204,10 +232,10 @@
                             <?php
                             
                                 //getting dynamic data for the charts.
-                                $element_text = ['Active Posts','Categories','Users','Comments'];
-                                $element_count = [$post_counts, $categories_count, $user_count, $comment_count];
+                                $element_text = ['Active Posts','Draft Posts','Categories','Users','Subscribers','Comments','Approved Comments','Unapproved Comments'];
+                                $element_count = [$post_counts, $post_draft_count, $categories_count, $user_count, $user_subscriber_count, $comment_count,$comments_approved_count,$comments_unapproved_count];
                             
-                                for($i=0; $i < 4; $i++){
+                                for($i=0; $i < 8; $i++){
 
                                     echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
 
