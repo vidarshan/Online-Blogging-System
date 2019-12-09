@@ -2,6 +2,8 @@
 
 <?php session_start(); ?>
 
+
+<!-- admin header and other files contain sessions-->
 <?php
 
 if (isset($_POST['login'])) {
