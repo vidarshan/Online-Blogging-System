@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2019 at 07:00 PM
+-- Generation Time: Dec 09, 2019 at 07:01 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -95,10 +95,15 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_category_id`, `post_title`, `post_author`, `post_date`, `post_image`, `post_content`, `post_tags`, `post_comment_count`, `post_status`) VALUES
-(1, 1, 'This is the first post', 'Vidarshan Adithya', '2019-12-08', 'image_1.jpg', '        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ncy. ', 'PHP, JSP, Java, C#', 0, 'published'),
-(2, 2, 'This is the second post', 'Vidarshan Adithya', '2019-12-08', 'image_5.jpg', '        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, ', 'Javascript, Java', 1, 'published'),
+(1, 1, 'This is the first post', 'Vidarshan Adithya', '2019-12-09', 'image_1.jpg', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. ncy.</p>', 'PHP, JSP, Java, C#', 0, 'published'),
+(2, 1, 'This is the second post-Updated twice', 'Vidarshan Adithya', '2019-12-09', 'image_5.jpg', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,</p>', 'Javascript, Java', 1, 'draft'),
 (3, 3, 'This is the third post', 'Vidarshan Adithya', '2019-12-08', 'image_5.jpg', '        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ', 'C++', 1, 'published'),
-(4, 6, 'This is the fourth post', 'Vidarshan Adithya', '2019-12-08', 'image_1.jpg', '                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ', 'Javascript, Java', 2, 'published');
+(4, 1, 'This is the fourth post-Updated', 'Vidarshan Adithya', '2019-12-09', 'image_1.jpg', '<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>', 'Javascript, Java', 2, 'published'),
+(7, 2, 'Java Advanced', 'Vidarshan Adithya', '2019-12-09', 'image_5.jpg', '<p>This post is about java</p>', 'Java, Java EE', 0, 'published'),
+(8, 1, 'PHP course', 'Edwin Diaz', '2019-12-09', 'image_5.jpg', '<p>This is a great course</p>', 'PHP, JSP, Java, C#', 0, 'published'),
+(9, 6, 'This is a Javasript course', 'Edwin Diaz', '2019-12-09', 'image_5.jpg', '<p>Javascript is great</p>', 'PHP, JSP, Java, C#', 0, 'published'),
+(10, 5, 'This is a SQL tutorial', 'Edwin Diaz', '2019-12-09', 'image_1.jpg', '<p>SQL is hard</p>', 'SQL', 0, 'published'),
+(11, 5, 'Testing a new feature', 'Edwin Diaz', '2019-12-09', 'image_1.jpg', '<p>This is a test post</p>', 'C++', 0, 'published');
 
 -- --------------------------------------------------------
 
@@ -115,7 +120,7 @@ CREATE TABLE `users` (
   `user_email` varchar(255) NOT NULL,
   `user_image` text NOT NULL,
   `user_role` varchar(255) NOT NULL,
-  `randSalt` varchar(255) NOT NULL
+  `randSalt` varchar(255) NOT NULL DEFAULT '$2y$10$Iusesomecrazystrings22'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -126,8 +131,11 @@ INSERT INTO `users` (`user_id`, `username`, `user_password`, `user_firstname`, `
 (1, 'Vidarshan', '12345', 'Vidarshan', 'Adithya', 'vidaaadi99@gmail.com', '', 'admin', ''),
 (2, 'John', '12345', 'John', 'Doe', 'johndoe@gmail.com', '', 'admin', ''),
 (3, 'anne', '12345', 'Anne', 'Marie', 'annemarie@gmail.com', '', 'subscriber', ''),
-(4, 'Test2', '12345', 'Test2', 'Test', 'Test2@gmail.com', '', 'subscriber', ''),
-(6, 'test3', '12345', 'Test3', 'Test', 'test@test.com', '', 'subscriber', '');
+(4, 'Test2', '12345', 'Peter', 'Test', 'Test2@gmail.com', '', 'subscriber', ''),
+(6, 'test3', '12345', 'Test3', 'Test', 'test@test.com', '', 'subscriber', ''),
+(7, 'stevehome', '12345', 'Steven', 'Home', 'steve@gmail.com', '', 'subscriber', ''),
+(8, 'smith', '12345', 'Smith', 'Jackson', 'simeth@gmail.com', '', 'admin', '$2y$10$Iusesomecrazystrings22'),
+(9, 'Jane', '12345', '', '', 'jane@gmail.com', '', 'subsriber', '$2y$10$Iusesomecrazystrings22');
 
 --
 -- Indexes for dumped tables
@@ -177,13 +185,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `user_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
