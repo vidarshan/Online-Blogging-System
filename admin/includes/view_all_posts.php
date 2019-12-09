@@ -68,7 +68,7 @@
             </div>
                             <thead>
                                 <tr>
-                                    <th><input type="checkbox" id="select_all_boxes"></th>
+                                    <th><input type="checkbox" id="selectAllBoxes"></th>
                                     <th>ID</th>
                                     <th>Post Author</th>
                                     <th>Post Title</th>
