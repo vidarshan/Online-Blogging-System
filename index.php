@@ -30,11 +30,8 @@
 
                         if($post_status !== 'published'){
 
-                            echo "No posts here";
-
-                        }else{
-
-                       
+                    
+                        }
 
                     
                         ?>
@@ -62,7 +59,7 @@
 
                 <hr>
             <?php
-                }}
+                }
             
             ?>
 
