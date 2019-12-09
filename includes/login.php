@@ -37,13 +37,9 @@ if (isset($_POST['login'])) {
 
     }
 
-    if($username !== $db_username && $password !== $db_user_password){
+    if($username === $db_username && $password === $db_user_password){
 
-        header("Location: ../index.php");
-    
-    }else if($username == $db_username && $password == $db_user_password){
-
-        //always assign from right to left
+                //always assign from right to left
         $_SESSION['username'] = $db_username;
         $_SESSION['user_firstname'] = $db_user_firstname;
         $_SESSION['user_lastname'] = $db_user_lastname;
@@ -51,7 +47,7 @@ if (isset($_POST['login'])) {
 
 
         header("Location: ../admin");
-
+    
     }else{
 
         header("Location: ../index.php");
