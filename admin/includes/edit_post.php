@@ -123,15 +123,23 @@ $query = "SELECT * FROM posts WHERE post_id = {$the_post_id} ";
         
 </div>
 
+    <div class="form-group">
+    <select name="post_status" id="">
+                    <option value='<?php echo $post_status; ?>'><?php echo $post_status; ?></option>
 
-<div class="form-group">
-    
-    <label for="post_status">Post Status</label>
-    <input type="text" value="<?php echo $post_status; ?>" class="form-control" name="post_status">
-        
-</div>
+                    <?php
+                        if($post_status == 'published'){
 
-<div class="form-group">
+                            echo "<option value='draft'>Draft</option>";
+                        }else{
+                            echo "<option value='published'>Publish</option>";
+                        }
+                   
+                   ?>
+    </select>
+    </div>
+
+    <div class="form-group">
     
         <img width="100" src="../images/<?php echo $post_image; ?>" alt="">
         <input type="file" name="image">
