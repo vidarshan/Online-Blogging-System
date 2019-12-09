@@ -15,14 +15,20 @@
         $password = mysqli_real_escape_string($connection, $password);
 
         $query = "SELECT randSalt FROM users ";
-        $select_rant_salt_query = mysqli_query($connection, $query);
+        $select_rand_salt_query = mysqli_query($connection, $query);
 
         //! is importnat if not an error will appear evet if the query is working
-        if(!$select_rant_salt_query){
+        if(!$select_rand_salt_query){
 
             die("Query failed ". mysqli_error($connection));
             
      }
+
+        while($row = mysqli_fetch_array($select_rand_salt_query)){
+
+            echo $salt = $row['randSalt'];
+
+        }
     }
  ?>
 
