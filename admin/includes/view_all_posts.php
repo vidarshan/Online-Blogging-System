@@ -1,6 +1,36 @@
+<?php
+
+    if(isset($_POST['checkBoxArray'])){
+        
+
+        foreach($_POST['checkBoxArray'] as $checkBoxValue){
+
+            $bulk_options = $_POST['checkBoxArray'];
+            
+        }
+    }
+?>
+<form action="" method="post">
 <table class="table table-bordered table-hover">
+
+
+            <div id="bulkOptionsContainer" class="col-xs-4">
+                <select name="bulk_options" class="form-control" id="">
+                    <option value="">Select Options</option>
+                    <option value="">Publish</option>
+                    <option value="">Draft</option>
+                    <option value="">Delete</option>
+                </select>
+            </div>
+                            
+            <div class="col-xs-4">
+
+            <input name = "submit" type="submit" class="btn btn-success" value="Apply">
+            <a href="add_post.php" class="btn btn-primary">Add New</a>
+            </div>
                             <thead>
                                 <tr>
+                                    <th><input type="checkbox" id="select_all_boxes"></th>
                                     <th>ID</th>
                                     <th>Post Author</th>
                                     <th>Post Title</th>
@@ -36,6 +66,15 @@
 
 
                                         echo "<tr>";
+                                        ?>
+
+
+                                        <!--need to make an array
+                                        -->
+                                        <td><input class='checkBoxes' name='checkBoxArray[]' type='checkbox' value='<?php echo "$post_id"; ?>'></td>;
+
+
+                                        <?php
                                         echo "<td>{$post_id}</td>";
                                         echo "<td>{$post_author}</td>";
                                         echo "<td>{$post_title}</td>";
@@ -85,3 +124,4 @@
                                 
                             </tbody>
                         </table>
+                        </form>
