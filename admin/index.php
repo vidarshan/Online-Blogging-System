@@ -191,6 +191,9 @@
             $select_all_draft_posts = mysqli_query($connection, $query);
             $post_draft_count = mysqli_num_rows($select_all_draft_posts); 
 
+            $query = "SELECT * FROM posts WHERE post_status = 'published'";
+            $select_all_published_posts = mysqli_query($connection, $query);
+            $post_published_count = mysqli_num_rows($select_all_published_posts); 
 
 
             $query = "SELECT * FROM comments WHERE comment_status = 'approved'";
@@ -232,10 +235,10 @@
                             <?php
                             
                                 //getting dynamic data for the charts.
-                                $element_text = ['Active Posts','Draft Posts','Categories','Users','Subscribers','Comments','Approved Comments','Unapproved Comments'];
-                                $element_count = [$post_counts, $post_draft_count, $categories_count, $user_count, $user_subscriber_count, $comment_count,$comments_approved_count,$comments_unapproved_count];
+                                $element_text = ['All Posts','Active Posts','Draft Posts','Categories','Users','Subscribers','Comments','Approved Comments','Unapproved Comments'];
+                                $element_count = [$post_counts, $post_published_count, $post_draft_count, $categories_count, $user_count, $user_subscriber_count, $comment_count,$comments_approved_count,$comments_unapproved_count];
                             
-                                for($i=0; $i < 8; $i++){
+                                for($i=0; $i < 9; $i++){
 
                                     echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
 
