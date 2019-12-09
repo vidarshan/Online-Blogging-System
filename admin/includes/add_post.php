@@ -34,6 +34,8 @@
         $create_post_query = mysqli_query($connection, $query);
 
         confirmQuery($create_post_query);
+
+        echo "<p class='bg-success'>Post Updated : " . " " . "<a href='view_all_posts.php'> View All Posts</a>";
     }
 ?>
 
@@ -76,9 +78,16 @@
 
 
     <div class="form-group">
-        
-        <label for="post_status">Post Status</label>
-        <input type="text" class="form-control" name="post_status">
+<!--         
+        <label for="post_status">Post Status</label> -->
+
+
+        <select name="post_status" id="">
+            <option value="draft">Select Status</option>
+            <option value="published">Published</option>
+            <option value="draft">Draft</option>
+        </select>
+       
             
     </div>
 
