@@ -25,6 +25,42 @@
     }
 ?>
 
+    <?php
+    
+    if(isset($_POST['update_profile'])){
+
+        $username = $_POST['username'];
+        $user_firstname = $_POST['user_firstname'];
+        $user_lastname = $_POST['user_lastname'];
+        $user_password = $_POST['user_password'];
+        $user_email = $_POST['user_email'];
+        $user_role = $_POST['user_role'];
+
+    
+        $query = "UPDATE users SET ";
+    
+        
+        $query .= "user_firstname = '{$user_firstname}', ";
+        $query .= "user_lastname = '{$user_lastname}', ";
+        $query .= "user_role = '{$user_role}', ";
+        $query .= "username = '{$username}', ";
+        $query .= "user_email = '{$user_email}', ";
+        $query .= "user_password = '{$user_password}' ";
+        
+        
+        $query .= "WHERE username = '{$username}' ";
+
+
+        $update_user = mysqli_query($connection, $query);
+
+
+        confirmQuery($update_user);
+
+        
+    }
+    ?>
+
+
 
     <div id="wrapper">
 
