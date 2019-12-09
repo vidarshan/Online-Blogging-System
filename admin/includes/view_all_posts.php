@@ -16,7 +16,29 @@
 
                 $bulk_publish = mysqli_query($connection, $query);
 
-                confirmQuery($bulk_options);
+                confirmQuery($bulk_publish);
+
+            break;
+
+            case 'draft':
+                
+                $query = "UPDATE posts SET post_status = 'draft' ";
+                $query .= "WHERE post_id = $postValueId";
+
+                $bulk_draft = mysqli_query($connection, $query);
+
+                confirmQuery($bulk_draft);
+
+            break;
+
+            case 'delete':
+                
+                $query = "DELETE FROM posts ";
+                $query .= "WHERE post_id = $postValueId";
+
+                $bulk_delete = mysqli_query($connection, $query);
+
+                confirmQuery($bulk_delete);
 
             break;
 
