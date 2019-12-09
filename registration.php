@@ -4,32 +4,44 @@
  <?php
     if(isset($_POST['submit'])){
   
-        //$2y$10$Iusesomecrazystrings22 -cost parameter on db 
+                //$2y$10$Iusesomecrazystrings22 -cost parameter on db 
 
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+                $username = $_POST['username'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
 
-        $username = mysqli_real_escape_string($connection, $username);
-        $email = mysqli_real_escape_string($connection, $email);
-        $password = mysqli_real_escape_string($connection, $password);
+                $username = mysqli_real_escape_string($connection, $username);
+                $email = mysqli_real_escape_string($connection, $email);
+                $password = mysqli_real_escape_string($connection, $password);
 
-        $query = "SELECT randSalt FROM users ";
-        $select_rand_salt_query = mysqli_query($connection, $query);
+                $query = "SELECT randSalt FROM users ";
+                $select_rand_salt_query = mysqli_query($connection, $query);
 
-        //! is importnat if not an error will appear evet if the query is working
-        if(!$select_rand_salt_query){
+                //! is importnat if not an error will appear evet if the query is working
+                if(!$select_rand_salt_query){
 
-            die("Query failed ". mysqli_error($connection));
-            
-     }
+                    die("Query failed ". mysqli_error($connection));
+                    
+            }
 
-        while($row = mysqli_fetch_array($select_rand_salt_query)){
+                $row = mysqli_fetch_array($select_rand_salt_query);
 
-            echo $salt = $row['randSalt'];
+                    $salt = $row['randSalt'];
+
+                    $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
+                    $query .= " VALUES('{$username}', '{$email}', '{$password}', 'subsriber')";
+
+                    $register_user_query = mysqli_query($connection, $query);
+
+                    if(!$register_user_query){
+
+                        die("Query failed " . mysqli_error($connection));
+
+                    }
+
 
         }
-    }
+    
  ?>
 
     <!-- Navigation -->
