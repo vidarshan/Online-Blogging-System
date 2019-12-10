@@ -10,35 +10,58 @@
                 $email = $_POST['email'];
                 $password = $_POST['password'];
 //test
-                $username = mysqli_real_escape_string($connection, $username);
-                $email = mysqli_real_escape_string($connection, $email);
-                $password = mysqli_real_escape_string($connection, $password);
 
-                $query = "SELECT randSalt FROM users ";
-                $select_rand_salt_query = mysqli_query($connection, $query);
+                        if(!empty($username) && !empty($password) && !empty($email)){
+                                
 
-                //! is importnat if not an error will appear evet if the query is working
-                if(!$select_rand_salt_query){
+                            $username = mysqli_real_escape_string($connection, $username);
+                            $email = mysqli_real_escape_string($connection, $email);
+                            $password = mysqli_real_escape_string($connection, $password);
+            
+            
+            
+                            $query = "SELECT randSalt FROM users ";
+                            $select_rand_salt_query = mysqli_query($connection, $query);
+            
+                            //! is importnat if not an error will appear evet if the query is working
+                            if(!$select_rand_salt_query){
+            
+                                die("Query failed ". mysqli_error($connection));
+                                
+                        }
+            
+                            $row = mysqli_fetch_array($select_rand_salt_query);
+            
+                                $salt = $row['randSalt'];
+            
+                                $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
+                                $query .= " VALUES('{$username}', '{$email}', '{$password}', 'subsriber')";
+            
+                                $register_user_query = mysqli_query($connection, $query);
+            
+                                if(!$register_user_query){
+            
+                                    die("Query failed " . mysqli_error($connection));
+            
+                                }
 
-                    die("Query failed ". mysqli_error($connection));
-                    
-            }
+                            $message = "Your registration has been submitted";
 
-                $row = mysqli_fetch_array($select_rand_salt_query);
 
-                    $salt = $row['randSalt'];
+                        }else{
 
-                    $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
-                    $query .= " VALUES('{$username}', '{$email}', '{$password}', 'subsriber')";
+                            $message = "Fields cannot be empty";
 
-                    $register_user_query = mysqli_query($connection, $query);
+                        }
 
-                    if(!$register_user_query){
 
-                        die("Query failed " . mysqli_error($connection));
 
-                    }
 
+        }   else {
+
+            //making variable empty to fix the error when the page is loaded and no information is on the form
+            //gives an undefined variable error
+            $message = "";
 
         }
     
@@ -59,6 +82,7 @@
                 <div class="form-wrap">
                 <h1>Register</h1>
                     <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
+                       <h4 class="text-center text-warning bg-success"><?php echo $message;?></h4>
                         <div class="form-group">
                             <label for="username" class="sr-only">username</label>
                             <input type="text" name="username" id="username" class="form-control" placeholder="Enter Desired Username">
