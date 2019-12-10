@@ -71,6 +71,8 @@
                 }
             break;
 
+
+
            }
 
         }
@@ -174,6 +176,7 @@
                                         echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>EDIT</a></td>";
                                         //delete confirmation
                                         echo "<td><a onClick=\"javascript: return confirm('Are you sure that you want to delete this item?') \" href='posts.php?delete={$post_id}'>DELETE</a></td>";
+                                        echo "<td><a onClick=\"javascript: return confirm('Are you sure that you want to reset views?') \" href='posts.php?reset={$post_id}'>RESET VIEWS</a></td>";
                                         echo "<tr>";
 
                                     }
@@ -188,6 +191,20 @@
                                         $delete_post_query = mysqli_query($connection, $query);
 
                                         confirmQuery($delete_post_query);
+
+                                        header("Location: ./posts.php");
+
+                                    }
+
+                                    if(isset($_GET['reset'])){
+
+                                        $the_post_id = $_GET['reset'];
+
+   
+                                        $query = "UPDATE posts SET post_views_count = 0 ";
+                                        $query .= "WHERE post_id = " . mysqli_real_escape_string($connection, $_GET['reset']) . " ";
+                        
+                                        $reset_query = mysqli_query($connection, $query);
 
                                         header("Location: ./posts.php");
 
