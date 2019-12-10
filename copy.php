@@ -12,14 +12,6 @@
 
 
             <?php
-
-
-                //pagination
-                $post_query_count = "SELECT * FROM posts ";
-                $find_count = mysqli_query($connection, $query);
-                $count = mysqli_num_rows($find_count);
-
-
                 $query = "SELECT * FROM posts ";
                 $select_all_posts_query = mysqli_query($connection, $query);
                 
