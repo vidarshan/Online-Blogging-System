@@ -96,7 +96,7 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
     
    <select name="user_role" id="">
 
-   <option value="subscriber"><?php echo $user_role; ?></option>
+   <option value="<?php echo $user_role; ?>"><?php echo $user_role; ?></option>
 
    
             <?php
