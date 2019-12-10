@@ -30,7 +30,20 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
         $user_email = $_POST['user_email'];
         $user_role = $_POST['user_role'];
 
+
+          $query = "SELECT randSalt FROM users";
+          $select_randSalt_query = mysqli_query($connection, $query);
+
+          if(!$select_randSalt_query){
+              die("Query Failed ". mysqli_error($connection));
+          }
     
+          //no while loop needed since one result is needed
+          $row = mysqli_fetch_array($select_randSalt_query);
+          $salt = $row['randSalt'];
+          $hashed_password = crypt($user_password, $salt);
+
+
         $query = "UPDATE users SET ";
     
         
@@ -39,7 +52,7 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
         $query .= "user_role = '{$user_role}', ";
         $query .= "username = '{$username}', ";
         $query .= "user_email = '{$user_email}', ";
-        $query .= "user_password = '{$user_password}' ";
+        $query .= "user_password = '{$hashed_password}' ";
         
         
         $query .= "WHERE user_id = {$the_user_id} ";
