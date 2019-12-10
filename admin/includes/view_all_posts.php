@@ -107,6 +107,7 @@
                                     <th>Post Tags</th>
                                     <th>Comments</th>
                                     <th>Date</th>
+                                    <th>Post Views</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,6 +127,7 @@
                                         $post_tags = $row['post_tags'];
                                         $post_comment_count = $row['post_comment_count'];
                                         $post_date = $row['post_date'];
+                                        $post_views_count = $row['post_views_count'];
                                         
                                         
                                         
@@ -165,6 +167,7 @@
                                         echo "<td>{$post_tags}</td>";
                                         echo "<td>{$post_comment_count}</td>";
                                         echo "<td>{$post_date}</td>";
+                                        echo "<td>{$post_views_count}</td>";
                                         //posts.php file contains the conditions
                                         //standard and professional way
                                         echo "<td><a href='../post.php?p_id={$post_id}'>VIEW POST</a></td>";
