@@ -140,7 +140,8 @@
                                         //standard and professional way
                                         echo "<td><a href='../post.php?p_id={$post_id}'>VIEW POST</a></td>";
                                         echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>EDIT</a></td>";
-                                        echo "<td><a href='posts.php?delete={$post_id}'>DELETE</a></td>";
+                                        //delete confirmation
+                                        echo "<td><a onClick=\"javascript: return confirm('Are you sure that you want to delete this item?') \" href='posts.php?delete={$post_id}'>DELETE</a></td>";
                                         echo "<tr>";
 
                                     }
