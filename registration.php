@@ -18,24 +18,24 @@
                             $email = mysqli_real_escape_string($connection, $email);
                             $password = mysqli_real_escape_string($connection, $password);
             
+                            $password = password_hash('$password', PASSWORD_BCRYPT, array('cost' => 12));
             
+                        //     $query = "SELECT randSalt FROM users ";
+                        //     $select_rand_salt_query = mysqli_query($connection, $query);
             
-                            $query = "SELECT randSalt FROM users ";
-                            $select_rand_salt_query = mysqli_query($connection, $query);
+                        //     //! is importnat if not an error will appear evet if the query is working
+                        //     if(!$select_rand_salt_query){
             
-                            //! is importnat if not an error will appear evet if the query is working
-                            if(!$select_rand_salt_query){
-            
-                                die("Query failed ". mysqli_error($connection));
+                        //         die("Query failed ". mysqli_error($connection));
                                 
-                        }
+                        // }
             
-                            $row = mysqli_fetch_array($select_rand_salt_query);
+                            // $row = mysqli_fetch_array($select_rand_salt_query);
             
-                                $salt = $row['randSalt'];
+                            //     $salt = $row['randSalt'];
 
-                                //encrypting password
-                                $password = crypt($password, $salt);
+                            //     //encrypting password
+                            //     $password = crypt($password, $salt);
             
                                 $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
                                 $query .= " VALUES('{$username}', '{$email}', '{$password}', 'subscriber')";
