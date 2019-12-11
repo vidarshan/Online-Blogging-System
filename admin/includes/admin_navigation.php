@@ -14,8 +14,8 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-            <?php $active_users = users_online(); ?>
-            <a class="navbar-brand text-primary" ><small>Users Online : <?php echo $active_users;?></small></a>
+            <!-- <?php //$active_users = users_online(); ?> -->
+            <a class="navbar-brand text-primary" ><small>Users Online : <span class="usersonline"></span></small></a>
             <li><a href='../index.php'>CMS Front</a></li>
             
            
