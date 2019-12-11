@@ -13,15 +13,20 @@
 
             <?php
 
+                //posts per page
+                $per_page = 3;
+
+
                 if(isset($_GET['page'])){
+
+                   
 
                     $page = $_GET['page'];
 
-
-
                 }else{
 
-                    $page = "";
+                    $page ="";
+
                 }
 
                 if($page == "" || $page == 1){
@@ -30,19 +35,19 @@
 
                 }else{
 
-                    $page_1 = ($page * 5) - 5;
+                    $page_1 = ($page * $per_page) - $per_page;
 
                 }
 
-                //pagination
-                $post_query_count = "SELECT * FROM posts ";
-                $find_count = mysqli_query($connection, $post_query_count);
+                $select_post_query = "SELECT * FROM posts";
+                $find_count = mysqli_query($connection, $select_post_query);
+
                 $count = mysqli_num_rows($find_count);
 
-                 $count = ceil($count / 5);
+                $count = ceil($count / $per_page);
 
 
-                $query = "SELECT * FROM posts LIMIT $page_1,5";
+                $query = "SELECT * FROM posts LIMIT $page_1,$per_page";
                 $select_all_posts_query = mysqli_query($connection, $query);
                 
                 while($row = mysqli_fetch_assoc($select_all_posts_query)){
@@ -66,12 +71,12 @@
                     
                         ?>
 
-                
+           
 
                 <!-- First Blog Post -->
             
                 <h2>
-                
+               
                     <a href="post.php?p_id=<?php echo $post_id; ?>">
                     <?php echo $post_title ?></a>
                 </h2>
@@ -104,21 +109,20 @@
 
         <hr>
 
+
         <ul class="pager">
 
+               <?php
 
-        <?php
-            for($i =1; $i <= $count; $i++ ){
+                    for($i = 1; $i <= $count; $i++){
 
+                        echo "<li><a href='index.php?page={$i}'>{$i}</a></li>";
 
-                echo "<li><a href=''>{$i}</a></li>";
+                    }
 
-            }
-        ?>
-                
-                
-
+                ?>
         </ul>
+
         <!-- Footer -->
 
     <?php include "includes/footer.php"; ?>
