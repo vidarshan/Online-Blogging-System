@@ -39,7 +39,7 @@
                 $find_count = mysqli_query($connection, $post_query_count);
                 $count = mysqli_num_rows($find_count);
 
-                $count = ceil($count / 5);
+                 $count = ceil($count / 5);
 
 
                 $query = "SELECT * FROM posts LIMIT $page_1,5";
@@ -71,6 +71,7 @@
                 <!-- First Blog Post -->
             
                 <h2>
+                
                     <a href="post.php?p_id=<?php echo $post_id; ?>">
                     <?php echo $post_title ?></a>
                 </h2>
@@ -106,6 +107,16 @@
         <ul class="pager">
 
 
+        <?php
+            for($i =1; $i <= $count; $i++ ){
+
+
+                echo "<li><a href=''>{$i}</a></li>";
+
+            }
+        ?>
+                
+                
 
         </ul>
         <!-- Footer -->
