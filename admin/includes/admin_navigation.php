@@ -1,5 +1,5 @@
 
- 
+
  <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,7 +14,11 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+            <?php $active_users = users_online(); ?>
+            <a class="navbar-brand text-primary" ><small>Users Online : <?php echo $active_users;?></small></a>
             <li><a href='../index.php'>CMS Front</a></li>
+            
+           
        
 
                 <li class="dropdown">
