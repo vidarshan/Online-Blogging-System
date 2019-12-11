@@ -50,4 +50,10 @@
 
     }
 
-    loadUsersOnline();
+    setInterval(function(){
+
+        loadUsersOnline();
+
+    },500);
+
+  

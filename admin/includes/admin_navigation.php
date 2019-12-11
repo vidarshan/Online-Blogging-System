@@ -15,7 +15,8 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
             <!-- <?php //$active_users = users_online(); ?> -->
-            <a class="navbar-brand text-primary" ><small>Users Online : <span class="usersonline"></span></small></a>
+           
+            <li><a href='../index.php'>Users online :<span class="usersonline"></span></a></li>
             <li><a href='../index.php'>CMS Front</a></li>
             
            
