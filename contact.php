@@ -1,22 +1,22 @@
-<?php  include "includes/navigation.php"; ?>
- <?php  include "includes/header.php"; ?>
+<?php // include "includes/navigation.php"; ?>
+ <?php  //include "includes/header.php"; ?>
 
  
 
  <?php
-    if(isset($_POST['submit'])){
+//    // if(isset($_POST['submit'])){
   
-                //$2y$10$Iusesomecrazystrings22 -cost parameter on db 
-                //check before using.
-                //doesnt work on a local server - disabled.
-                $to = "vidaaadi99@gmail.com";
-                $subject = wordwrap($_POST['subject']);
-                $body = $_POST['body'];
-                $header ="From : ".  $_POST['email'];
-//test
-                mail($to,$subject,$body, $header);
+//                 //$2y$10$Iusesomecrazystrings22 -cost parameter on db 
+//                 //check before using.
+//                 //doesnt work on a local server - disabled.
+//                 $to = "vidaaadi99@gmail.com";
+//                 $subject = wordwrap($_POST['subject']);
+//                 $body = $_POST['body'];
+//                 $header ="From : ".  $_POST['email'];
+// //test
+//                 mail($to,$subject,$body, $header);
 
-    }
+//     }
 
     
  ?>
@@ -27,7 +27,7 @@
     
  
     <!-- Page Content -->
-    <div class="container">
+    <!-- <div class="container">
     
 <section id="login">
     <div class="container">
@@ -60,8 +60,8 @@
 </section>
 
 
-        <hr>
+        <hr> -->
 
 
 
-<?php include "includes/footer.php"; ?>
+<?// include "includes/footer.php"; ?>
