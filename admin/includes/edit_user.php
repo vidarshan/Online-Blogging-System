@@ -3,7 +3,7 @@
     if(isset($_GET['edit_user'])){
 
         $the_user_id = $_GET['edit_user'];
-    }
+    
 
 $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
         $select_users_by_id = mysqli_query($connection, $query);
@@ -18,8 +18,11 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
             $user_role = $row['user_role'];
 
     
+        
         }
 
+
+    
     
     if(isset($_POST['edit_user'])){
 
@@ -36,7 +39,7 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
       
         if(!empty($user_password)){
             $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id";
-            $get_user = mysqli_query($connection, $query);
+            $get_user = mysqli_query($connection, $query_password);
 
             confirmQuery($get_user);
             $row = mysqli_fetch_array($get_user);
@@ -76,11 +79,15 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
         }
 
 
-
-
-        
     }
 
+}else{
+
+    header("Location: index.php");
+}
+
+        
+    
 
       
     
@@ -156,7 +163,7 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
     <div class="form-group">
         
         <label for="post_tags">Password</label>
-        <input value="<?php echo $user_password; ?>" type="password" class="form-control" name="user_password">
+        <input autocomplete="off" type="password" class="form-control" name="user_password">
             
     </div>
 
