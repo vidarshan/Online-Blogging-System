@@ -38,9 +38,11 @@ if (isset($_POST['login'])) {
     }
 
     //decrypt password
-    $password = crypt($password, $db_user_password);
+    // $password = crypt($password, $db_user_password);
 
-    if($username === $db_username && $password === $db_user_password){
+    //password verify compares form passsord and db password.
+    //returns true or false
+    if(password_verify($password,$db_user_password)){
 
                 //always assign from right to left
         $_SESSION['username'] = $db_username;
