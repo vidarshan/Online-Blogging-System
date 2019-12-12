@@ -31,37 +31,52 @@ $query = "SELECT * FROM users WHERE user_id = {$the_user_id} ";
         $user_role = $_POST['user_role'];
 
 
-          $query = "SELECT randSalt FROM users";
-          $select_randSalt_query = mysqli_query($connection, $query);
+      
+        //bracket
+      
+        if(!empty($user_password)){
+            $query_password = "SELECT user_password FROM users WHERE user_id = $the_user_id";
+            $get_user = mysqli_query($connection, $query);
 
-          if(!$select_randSalt_query){
-              die("Query Failed ". mysqli_error($connection));
-          }
+            confirmQuery($get_user);
+            $row = mysqli_fetch_array($get_user);
+
+            $db_user_password = $row['user_password'];
+
+            if($db_user_password != $user_password){
+
+                $hashed_password = password_hash($user_password, PASSWORD_BCRYPT, array('cost' => 12));
     
-          //no while loop needed since one result is needed
-          $row = mysqli_fetch_array($select_randSalt_query);
-          $salt = $row['randSalt'];
-          $hashed_password = crypt($user_password, $salt);
+            }
 
 
-        $query = "UPDATE users SET ";
-    
-        
-        $query .= "user_firstname = '{$user_firstname}', ";
-        $query .= "user_lastname = '{$user_lastname}', ";
-        $query .= "user_role = '{$user_role}', ";
-        $query .= "username = '{$username}', ";
-        $query .= "user_email = '{$user_email}', ";
-        $query .= "user_password = '{$hashed_password}' ";
-        
-        
-        $query .= "WHERE user_id = {$the_user_id} ";
+            
+                    $query = "UPDATE users SET ";
+                
+                    
+                    $query .= "user_firstname = '{$user_firstname}', ";
+                    $query .= "user_lastname = '{$user_lastname}', ";
+                    $query .= "user_role = '{$user_role}', ";
+                    $query .= "username = '{$username}', ";
+                    $query .= "user_email = '{$user_email}', ";
+                    $query .= "user_password = '{$hashed_password}' ";
+                    
+                    
+                    $query .= "WHERE user_id = {$the_user_id} ";
 
 
-        $update_user = mysqli_query($connection, $query);
+                    $update_user = mysqli_query($connection, $query);
 
 
-        confirmQuery($update_user);
+                    confirmQuery($update_user);
+
+
+                    echo "User Updated" . "<a href='users.php'>View Users</a>";
+            
+        }
+
+
+
 
         
     }

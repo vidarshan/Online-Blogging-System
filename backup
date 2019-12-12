@@ -1,0 +1,14 @@
+        if(!empty($user_password)){
+            $query_password = "SELECT * FROM users WHERE user_id = $user_id";
+            $get_user = mysqli_query($connection, $query);
+
+            confirmQuery($get_user);
+
+            
+        }
+
+
+
+
+
+
