@@ -82,7 +82,7 @@
                                         echo "<td>{$comment_date}</td>";
                                         echo "<td><a href='comments.php?approve=$comment_id'>Approve</a></td>";
                                         echo "<td><a href='comments.php?unapprove=$comment_id'>Unapprove</a></td>";
-                                        echo "<td><a href='comments.php?delete={$comment_id}'>DELETE</a></td>";
+                                        echo "<td><a href='post_comments.php?delete={$comment_id}&id=" . $_GET['id']."'>DELETE</a></td>";
 
 
 
@@ -135,7 +135,7 @@
 
                                         confirmQuery($delete_comment_query);
 
-                                        header("Location: ./comments.php");
+                                        header("Location: post_comments.php?id=". $_GET['id'] ."");
 
                                     }
                             ?>
